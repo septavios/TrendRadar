@@ -90,6 +90,26 @@ rss:
       url: "http://www.ruanyifeng.com/blog/atom.xml"
       # max_age_days: 7               # 示例：推送7天内的文章（更新较慢的博客）
 
+    - id: "reuters-top"
+      name: "Reuters Top News"
+      url: "https://feeds.reuters.com/reuters/topNews"
+      max_age_days: 2
+
+    - id: "bbc-world"
+      name: "BBC World"
+      url: "http://feeds.bbci.co.uk/news/world/rss.xml"
+      max_age_days: 2
+
+    - id: "techcrunch"
+      name: "TechCrunch"
+      url: "https://techcrunch.com/feed/"
+      max_age_days: 2
+
+    - id: "ars"
+      name: "Ars Technica"
+      url: "https://feeds.arstechnica.com/arstechnica/index/"
+      max_age_days: 3
+
     # 自定义源示例
     # - id: "custom-feed"
     #   name: "自定义源"
@@ -117,10 +137,10 @@ rss:
 #    • 适用场景：避免重复信息干扰
 # ===============================================================
 report:
-  mode: "current"                     # 可选: daily | current | incremental
-  rank_threshold: 5                   # 排名高亮阈值
-  sort_by_position_first: false       # true=按配置位置排序，false=按热点条数排序
-  max_news_per_keyword: 0             # 每个关键词最大显示数量（0=不限制）
+  mode: "incremental"                 # 可选: daily | current | incremental
+  rank_threshold: 8                   # 排名高亮阈值
+  sort_by_position_first: true        # true=按配置位置排序，false=按热点条数排序
+  max_news_per_keyword: 3             # 每个关键词最大显示数量（0=不限制）
   reverse_content_order: false        # false=热点词汇统计在前，true=新增热点新闻在前
 
 
@@ -209,7 +229,7 @@ storage:
   formats:
     sqlite: true                      # 主存储（必须启用）
     txt: false                        # 是否生成 TXT 快照
-    html: false                       # 是否生成 HTML 报告（⚠️ 邮件推送必须设为 true）
+    html: true                        # 是否生成 HTML 报告（⚠️ 邮件推送必须设为 true）
 
   # 本地存储配置
   local:
@@ -263,8 +283,8 @@ advanced:
   # 排序权重（用于重新排序不同平台的热搜）
   # 合起来等于 1
   weight:
-    rank: 0.6                         # 排名权重
-    frequency: 0.3                    # 频次权重
+    rank: 0.4                         # 排名权重
+    frequency: 0.5                    # 频次权重
     hotness: 0.1                      # 热度权重
 
   # 多账号限制
